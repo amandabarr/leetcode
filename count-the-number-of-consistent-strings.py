@@ -30,3 +30,23 @@ Constraints:
 The characters in allowed are distinct.
 words[i] and allowed contain only lowercase English letters.
 """
+
+
+class Solution:
+    def countConsistentStrings(self, allowed: str, words: List[str]) -> int:
+
+        allowed_letters = set()
+        word_count = 0
+
+        for letter in allowed:
+            allowed_letters.add(letter)
+
+        for word in words:
+            word_allowed = True
+            for char in word:
+                if char not in allowed_letters:
+                    word_allowed = False
+            if word_allowed:
+                word_count += 1
+
+        return word_count
